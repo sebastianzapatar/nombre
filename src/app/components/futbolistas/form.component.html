@@ -1,0 +1,90 @@
+<div class="card bg-dark text-white">
+    <h6>{{jugador.nombre}} {{jugador.goles}}</h6>
+    <div class="card-header">Agregar Cliente</div>
+    <div class="card-body">
+        <form (ngSubmit)="create()" #futbolistaForm="ngForm">
+            <div class="form-group row">
+                <label for="nombre" class="col-form-label col-sm-2">
+                    Nombre
+                </label>
+                <input type="text" class="form-control" required minlength="3"
+                name="nombre" placeholder="nombre" 
+                [(ngModel)]="jugador.nombre" #nombre="ngModel"/>
+                <div class="alert alert-danger" 
+                *ngIf="nombre.invalid && (nombre.dirty ||nombre.touched)" >
+                    
+                    <div *ngIf="nombre.errors.required">
+                        Nombre es requerido
+                    </div>
+                    <div *ngIf="nombre.errors.minlength">
+                        Nombre debe tener al menos 3 caracteres
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="apellido" class="col-form-label col-sm-2" >
+                    apellido
+                </label>
+                <input type="text" class="form-control" required minlength="3"
+                name="apellido" placeholder="apellido" 
+                [(ngModel)]="jugador.apellido" #apellido="ngModel"/>
+                <div class="alert alert-danger" 
+                *ngIf="apellido.invalid && (apellido.dirty ||apellido.touched)" >
+                   
+                    <div *ngIf="apellido.errors.required">
+                       Apellido es requerido
+                    </div>
+                    <div *ngIf="apellido.erros.minlength">
+                        Apellido debe tener al menos 4 caracteres
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="goles" class="col-form-label col-sm-2">
+                    goles
+                </label>
+                <input type="number" class="form-control" required
+                name="goles" placeholder="goles" 
+                [(ngModel)]="jugador.goles"/>
+                
+            </div>
+            <div class="form-group row">
+                <label for="FechaNac" class="col-form-label col-sm-2">
+                    Fecha de nacimiento
+                </label>
+                <input type="date" class="form-control" required
+                name="fechaNac" placeholder="Fecha de nacimiento" 
+                [(ngModel)]="jugador.fechaNac"/>
+                
+            </div>
+            <div class="form-group row">
+                <label for="FechaNac" class="col-form-label col-sm-2">
+                    Escoger Pais
+                </label>
+                <select class="form-control" required
+                name="pais" placeholder="Fecha de nacimiento" 
+                [(ngModel)]="jugador.pais">
+                    <option *ngFor="let pais of paises" [ngValue]="pais">
+                        {{pais.nombre}}
+                    </option>
+                </select>
+                
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <button role="button" class="btn btn-primary"
+                    *ngIf="!jugador.id else elseblock"
+                    [disabled]="!futbolistaForm.form.valid"
+                    >
+                        Crear
+                    </button>
+                    <ng-template #elseblock>
+                    <button type="button" class="btn btn-info"
+                     (click)="update()" 
+                     [disabled]="!futbolistaForm.form.valid">editar</button>
+                    </ng-template>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Consola</th>
+        <th>Año</th>
+        <th>Desarrolladora</th>
+        <th>Imagen</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let juego of juegos">
+        <tr>
+            <td>{{juego.nombre}}</td>
+            <td>{{juego.consola}}</td>
+            <td>{{juego.year}}</td>
+            <td>{{juego.desarrolladora}}</td>
+            <img src="{{juego.imagen}}" alt="{{juego.nombre}}"  height="100">
+        </tr>
+    </tbody>
+</table>

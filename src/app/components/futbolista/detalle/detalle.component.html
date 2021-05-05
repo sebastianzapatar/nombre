@@ -1,0 +1,39 @@
+<div class="card bg-dark text-white">
+    <div class="card-header">Detalle Futbolista</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <ul class="list-group" *ngIf="futbolista">
+                    <li class="list-group-item">{{futbolista.nombre}}</li>
+                    <li class="list-group-item">{{futbolista.apellido}}</li>
+                    <li class="list-group-item">{{futbolista.goles}}</li>
+                    <li class="list-group-item">{{futbolista.pais.nombre}}</li>
+                    
+                    
+                    
+                </ul>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <button (click)="subirfoto()"
+                      class="btn btn-outline-secondary" type="button">Subir</button>
+                    </div>
+                    <div class="custom-file">
+                      <input 
+                      (change)="seleccionarfoto($event)"
+                      type="file" class="custom-file-input" id="inputGroupFile03">
+                      <label class="custom-file-label" for="inputGroupFile03">
+                          Seleccionar foto</label>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm">
+                <img *ngIf="futbolista.foto" 
+                src="http://127.0.0.1:2020/api/futbolista/upload/img/{{futbolista.foto}}"
+                alt="{{futbolista.id}}"/>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        
+    </div>
+</div>
